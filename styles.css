@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+}
+
+:root {
+    /*--color: rgb(250, 250, 240);
+    --border: rgb(194, 194, 194);
+    --background: rgb(240, 250, 255);*/
+    --overlaybackground: rgba(0, 0, 0, 0.5);
+    --text: #F0F4F1;
+    --background: #0E120F;
+    --border: #729494;
+    --accent: #425852;
+    --backgroundcolor: #B2C5B8
+}
+
+td {
+    color: var(--text);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+div.search {
+    width: 100%;
+    height: 3em;
+    background-color: var(--background);
+    position: fixed;
+    top: 0;
+}
+
+input#search {
+    width: calc(100% - 4px - 1rem);
+    height: 2rem;
+    border: 1px;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    border-radius: 0.75em;
+    border-color: var(--border);
+    background-color: var(--accent);
+    color: var(--text);
+}
+
+button.control {
+    border-color: var(--border);
+    
+    /*position: fixed;
+    bottom: 0;*/
+    
+    width: 3rem;
+    height: 3rem;
+}
+button.control.left {
+    float: left;
+}
+button.control.right {
+    float: right;
+}
+
+div#controls {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background);
+}
+
+input.word,
+input.overlay,
+select.overlay {
+    width: calc(100% - 4rem);
+    margin: 2px;
+    height: 1.2rem;
+    background-color: var(--accent);
+
+    border-color: var(--border);
+    border-width: 2px;
+
+    color: var(--text);
+}
+input.overlay {
+    width: 20em;
+}
+select.overlay {
+    width: 20em;
+    border-style: inset;
+}
+
+textarea.word {
+    width: calc(100% - 4rem);
+    margin: 2px;
+    height: 6.2rem;
+    background-color: var(--accent);
+    resize: none;
+
+    border-color: var(--border);
+    border-width: 2px;
+
+    color: var(--text);
+}
+
+div.entry {
+    position: relative;
+    /*padding-left: 4em;*/
+    background-color: var(--background);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+button.delete {
+    /*float: right;*/
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    margin: 4px;
+    position: absolute;
+    border-color: var(--border);
+}
+
+div.overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    background-color: var(--overlaybackground);
+
+    align-items: center;
+    display: flex;
+}
+
+div.wrapper {
+    max-width: fit-content;
+    margin: auto;
+    vertical-align: middle;
+}
+
+td.tablelabel {
+    text-align: right;
+}
+
+button.overlay {
+    float: right;
+    width: 5em;
+    border-color: var(--border);
+}
+
+div.contents {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    height: calc(100% - 6rem);
+    overflow-y: auto;
+    background-color: var(--background);
+}
+
+button {
+    color: var(--text);
+    background-color: var(--accent);
+}
+button:hover {
+    border-color: var(--backgroundcolor);
+}
+
+textarea:focus,
+input:focus {
+    outline: var(--backgroundcolor);
+}
+
+textarea {
+    border-style: inset;
+}
+
+textarea#alphabet {
+    width: 20em;
+    height: 10em;
+    margin: 2px;
+    height: 6.2rem;
+    background-color: var(--accent);
+    resize: none;
+
+    border-color: var(--border);
+    border-width: 2px;
+
+    color: var(--text);
+}
+
+.buttonicon {
+    width: 2rem;
+}

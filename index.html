@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="fuse.js"></script>
+
+</head>
+<body>
+    <div class="overlay" id="overlay" style="display: none">
+        <div class="wrapper" id="settings" style="display: none">
+            <table>
+                <tr>
+                    <td class="tablelabel">Dictionary name</td>
+                    <td><input type="text" class="overlay" id="dictname"></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Primary language</td>
+                    <td><input type="text" name="" id="lang1" class="overlay"></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Secondary language</td>
+                    <td><input type="text" name="" id="lang2" class="overlay"></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Author</td>
+                    <td><input type="text" name="" id="author" class="overlay"></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Alphabet</td>
+                    <td><textarea type="text" name="" id="alphabet" class="overlay"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Sort by</td>
+                    <td><select type="text" name="" id="sortby" class="overlay">
+                        <option value="primaryLanguage">Primary language</option>
+                        <option value="secondaryLanguage">Secondary language</option>
+                        <option value="pronounciation">Pronounciation</option>
+                        <option value="meaning">Meaning</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="overlay" id="applySettingsChange">Ok</button>
+                        <button class="overlay" id="cancelSettingsChange">Cancel</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="wrapper" id="projectNotSavedWarning" style="display: none">
+            <p>Project not saved!</p>
+            <p>Are you sure you want to dismiss the file changes?</p>
+            <button class="overlay" id="applyProjectChangesRemoval">Ok</button>
+            <button class="overlay" id="cancelProjectChangesRemoval">Cancel</button>
+        </div>
+    </div>
+
+    <div class="search">
+        <input id="search" type="text" autocomplete="off" placeholder="Search...">
+    </div>
+    <div class="contents">
+        <!--div class="entry" id="random">
+            <button class="delete" onclick="removeEntry(this.parentElement.id)">Trash</button>
+            <input type="text" autocomplete="off" class="word" id="word">
+            <input type="text" autocomplete="off" class="word" id="translation">
+            <input type="text" autocomplete="off" class="word" id="pronounciation">
+            <textarea class="word" id="meaning"></textarea>
+        </div-->
+    </div>
+
+    <div id="controls">
+        <button class="control left" id="settingsButton">
+            <img src="icon_properties.svg" class="buttonicon">
+        </button>
+        <button class="control left" id="load">
+            <img src="icon_open.svg" class="buttonicon">
+        </button>
+        <button class="control left" id="save">
+            <img src="icon_save.svg" class="buttonicon">
+        </button>
+        <button class="control left" id="new">
+            <img src="icon_newfile.svg" class="buttonicon">
+        </button>
+        <button class="control right" id="add">
+            <img src="icon_newentry.svg" class="buttonicon">
+        </button>
+        <button class="control right" id="sort">
+            <img src="icon_sort.svg" class="buttonicon">
+        </button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
