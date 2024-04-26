@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    font-size: calc(2vmin * 2vmax);
+    font-size: calc(1vmin + 1vmax);
 }
 
 :root {
