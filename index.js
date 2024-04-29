@@ -20,6 +20,16 @@ const fuseOptions = {
 	]
 };
 
+if (localStorage.getItem("fontsize") === null){
+	localStorage.setItem("fontsize", "2vmin")
+}
+
+function setGlobalFontSize(size){
+	for(let e of document.querySelectorAll('*')){
+		e.style.fontSize = size;
+	}
+}
+setGlobalFontSize(localStorage.getItem("fontsize"))
 
 const emptyProject = {
 	info: {
@@ -246,7 +256,7 @@ newProjectButton.onclick = () => {
 
 		interruptedByFileNotSavedAction = clearWorkspace
 	}else{
-		load()
+		clearWorkspace()
 	}
 }
 
@@ -332,4 +342,34 @@ sortButton.onclick = () => {
 	words = words.sort(sorting)
 
 	loadWordsFromArray(words)
+}
+
+const openGlobalSettingsButton = document.getElementById("globalsettings")
+const globalSettingsOverlay = document.getElementById("globalSettings")
+
+const globalSettings = {
+	fontSize: document.getElementById("fontsize")
+}
+
+openGlobalSettingsButton.onclick = () => {
+	var fontsize = localStorage.getItem("fontsize") || "2vmin"
+	globalSettings.fontSize.value = fontsize
+	globalSettingsOverlay.style.display = ""
+	globalOverlay.style.display = ""
+}
+
+
+const cancelGlobalSettingsChangeButton = document.getElementById("cancelGlobalSettingsChange")
+cancelGlobalSettingsChangeButton.addEventListener("click", () => {
+	globalSettingsOverlay.style.display = "none"
+	globalOverlay.style.display = "none"
+})
+const applyGlobalSettingsChangeButton = document.getElementById("applyGlobalSettingsChange")
+applyGlobalSettingsChangeButton.onclick = () => {
+	globalSettingsOverlay.style.display = "none"
+	globalOverlay.style.display = "none"
+
+	var fontsize = globalSettings.fontSize.value
+	localStorage.setItem("fontsize", fontsize)
+	setGlobalFontSize(fontsize)
 }
