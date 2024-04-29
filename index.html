@@ -54,10 +54,28 @@
             <button class="overlay" id="applyProjectChangesRemoval">Ok</button>
             <button class="overlay" id="cancelProjectChangesRemoval">Cancel</button>
         </div>
+        <div class="wrapper" id="globalSettings" style="display: none">
+            <table>
+                <tr>
+                    <td class="tablelabel">Font Size (CSS units)</td>
+                    <td><input type="text" class="overlay" id="fontsize"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="overlay" id="applyGlobalSettingsChange">Ok</button>
+                        <button class="overlay" id="cancelGlobalSettingsChange">Cancel</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div class="search">
+    <div class="topbar">
         <input id="search" type="text" autocomplete="off" placeholder="Search...">
+        <button class="topbarbutton" id="globalsettings">
+            <img src="icon_properties.svg" class="topbarbuttonicon">
+        </button>
     </div>
     <div class="contents">
         <!--div class="entry" id="random">
