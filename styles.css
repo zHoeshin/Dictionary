@@ -45,6 +45,7 @@ input#search {
     background-color: var(--accent);
     color: var(--text);
     vertical-align: top;
+    font-size: 1em;
 }
 
 button.topbarbutton {
