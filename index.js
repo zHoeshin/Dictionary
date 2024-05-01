@@ -20,6 +20,8 @@ const fuseOptions = {
 	]
 };
 
+const theme = document.getElementById("theme")
+
 if (localStorage.getItem("fontsize") === null){
 	localStorage.setItem("fontsize", "2vmin")
 }
@@ -30,6 +32,12 @@ function setGlobalFontSize(size){
 	}
 }
 setGlobalFontSize(localStorage.getItem("fontsize"))
+
+
+if (localStorage.getItem("theme") === null){
+	localStorage.setItem("theme", "theme_default.css")
+}
+theme.href = localStorage.getItem("theme")
 
 const emptyProject = {
 	info: {
@@ -348,12 +356,14 @@ const openGlobalSettingsButton = document.getElementById("globalsettings")
 const globalSettingsOverlay = document.getElementById("globalSettings")
 
 const globalSettings = {
-	fontSize: document.getElementById("fontsize")
+	fontSize: document.getElementById("fontsize"),
+	themeSelector: document.getElementById("themeSelector")
 }
 
 openGlobalSettingsButton.onclick = () => {
 	var fontsize = localStorage.getItem("fontsize") || "2vmin"
 	globalSettings.fontSize.value = fontsize
+	globalSettings.themeSelector.value = localStorage.getItem("theme") || "theme_default.css"
 	globalSettingsOverlay.style.display = ""
 	globalOverlay.style.display = ""
 }
@@ -372,4 +382,8 @@ applyGlobalSettingsChangeButton.onclick = () => {
 	var fontsize = globalSettings.fontSize.value
 	localStorage.setItem("fontsize", fontsize)
 	setGlobalFontSize(fontsize)
+
+	var t = globalSettings.themeSelector.value
+	localStorage.setItem("theme", t)
+	theme.href = t
 }

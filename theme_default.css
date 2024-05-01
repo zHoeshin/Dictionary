@@ -1,0 +1,12 @@
+:root {
+    /*--color: rgb(250, 250, 240);
+    --border: rgb(194, 194, 194);
+    --background: rgb(240, 250, 255);*/
+    --overlaybackground: rgba(0, 0, 0, 0.5);
+    --text: #F0F4F1;
+    --background: #0E120F;
+    --border: #729494;
+    --accent: #425852;
+    --backgroundcolor: #B2C5B8;
+    --image-color-filter: none;
+}

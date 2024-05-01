@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <title></title>
-
+    <title>Dictionary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme_light.css" id="theme">
     <script src="fuse.js"></script>
 
 </head>
@@ -59,6 +60,14 @@
                 <tr>
                     <td class="tablelabel">Font Size (CSS units)</td>
                     <td><input type="text" class="overlay" id="fontsize"></td>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Theme</td>
+                    <td><select type="text" name="" id="themeSelector" class="overlay">
+                        <option value="theme_default.css">Default</option>
+                        <option value="theme_light.css">Light</option>
+                        <option value="theme_dark.css">Dark</option>
+                    </select></td>
                 </tr>
                 <tr>
                     <td></td>
