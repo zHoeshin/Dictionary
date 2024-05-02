@@ -23,7 +23,7 @@ div.topbar {
 }
 
 input#search {
-    width: calc(100% - 10px - 3.5em);
+    width: calc(100% - 10px - 6.5em);
     height: 2em;
     border: 1px;
     margin-top: 0.5rem;
@@ -209,4 +209,18 @@ img.buttonicon {
 
 img {
     filter: var(--image-color-filter);
+}
+
+p {
+    color: var(--text)
+}
+
+button.about {
+    width: 3em;
+    height: 3em;
+    border: none;
+
+    background-image: var(--icon);
+    background-size: 3em;
+    background-color: transparent;
 }

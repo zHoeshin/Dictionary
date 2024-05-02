@@ -9,4 +9,6 @@
     --accent: #dcfff6;
     --backgroundcolor: #3d423f;
     --image-color-filter: invert(1);
+
+    --icon: url(icon_black_blush.svg);
 }

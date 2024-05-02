@@ -39,6 +39,15 @@ if (localStorage.getItem("theme") === null){
 }
 theme.href = localStorage.getItem("theme")
 
+const aboutButton = document.getElementById("about")
+
+
+const icon = document.getElementById("icon")
+if (window.matchMedia('(prefers-color-scheme: dark)').matches){
+	icon.href = "icon_white_blush.svg"
+}
+
+
 const emptyProject = {
 	info: {
 		author: "",
