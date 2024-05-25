@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme_light.css" id="theme">
+    <link rel="stylesheet" href="threeinrow_false.css" id="threeinrowcss">
+    <link rel="stylesheet" href="infofield_true.css" id="infofieldcss">
 
     <link rel="icon" href="icon_black_blush.svg" id="icon"></link>
 
@@ -12,6 +14,13 @@
 </head>
 <body>
     <div class="overlay" id="overlay" style="display: none">
+        <div class="wrapper" id="aboutpage" style="display: none">
+            <svg id="aboutpagelogo" src="icon_black_blush.svg">
+                ...
+            </svg>
+        </div>
+
+
         <div class="wrapper" id="settings" style="display: none">
             <table>
                 <tr>
@@ -29,6 +38,16 @@
                 <tr>
                     <td class="tablelabel">Author</td>
                     <td><input type="text" name="" id="author" class="overlay"></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Force WORD, TRANSLATION and PRONIUNCIATION fields to be in single row</td>
+                    <td><input type="checkbox" name="" id="threeinrow" class="overlay"></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td class="tablelabel">Enable Expanded Info field</td>
+                    <td><input type="checkbox" name="" id="infofield" class="overlay" checked="true"></td>
                 </tr>
                 <tr>
                     <td class="tablelabel">Alphabet</td>

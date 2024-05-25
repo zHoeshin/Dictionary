@@ -224,3 +224,16 @@ button.about {
     background-size: 3em;
     background-color: transparent;
 }
+
+div.wrapper#aboutpage {
+    /*background-color: var(--background);*/
+
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+input[type="checkbox"]{
+    accent-color: var(--accent);
+}

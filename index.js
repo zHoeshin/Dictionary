@@ -73,6 +73,10 @@ const projectSettings = {
 	name: document.getElementById("dictname"),
 	alphabet: document.getElementById("alphabet"),
 	sortBy: document.getElementById("sortby"),
+	infofield: document.getElementById("infofield"),
+	threeinrow: document.getElementById("threeinrow"),
+	infofieldcss: document.getElementById("infofieldcss"),
+	threeinrowcss: document.getElementById("threeinrowcss"),
 }
 
 const searchInput = document.getElementById("search")
@@ -217,6 +221,8 @@ function save(){
 			secondaryLanguage: projectSettings.lang2.value,
 			author: projectSettings.author.value,
 			name: projectSettings.name.value,
+			infofield: projectSettings.infofield.checked,
+			threeinrow: projectSettings.threeinrow.checked,
 		},
 		words: list
 	}
@@ -307,6 +313,9 @@ cancelSettingsChangeButton.onclick = () => {
 	projectSettings.name.value = project.info.name
 	projectSettings.alphabet.value = project.info.alphabet
 	projectSettings.sortBy.value = project.info.sortBy
+
+	projectSettings.infofield.checked = project.info.infofield
+	projectSettings.threeinrow.checked = project.info.threeinrow
 }
 const applySettingsChangeButton = document.getElementById("applySettingsChange")
 applySettingsChangeButton.onclick = () => {
@@ -320,6 +329,11 @@ applySettingsChangeButton.onclick = () => {
 	project.info.name = projectSettings.name.value
 	project.info.alphabet = (projectSettings.alphabet.value = projectSettings.alphabet.value.toLowerCase())
 	project.info.sortBy = projectSettings.sortBy.value
+
+	project.info.infofield = projectSettings.infofield.checked
+	project.info.threeinrow = projectSettings.threeinrow.checked
+	projectSettings.infofieldcss.href = `infofield_${project.info.infofield}.css`
+	projectSettings.threeinrowcss.href = `threeinrow_${project.info.threeinrow}.css`
 }
 
 const projectSettingsButton = document.getElementById("settingsButton")
