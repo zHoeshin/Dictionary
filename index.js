@@ -20,6 +20,128 @@ const fuseOptions = {
 	]
 };
 
+const emptyProject = {
+	info: {
+		author: "",
+		primaryLanguage: "",
+		secondaryLanguage: "",
+		name: "",
+		alphabet: "",
+		sortBy: "primaryLanguage",
+		infofield: true,
+		threeinrow: false
+	},
+	words: [
+
+	]
+}
+
+let project = JSON.parse(JSON.stringify(emptyProject));
+
+
+const handleKeyPress = function(e, self, isTextArea = false){
+	if(self.selectionEnd !== self.selectionStart){
+		return
+	}
+	if((self.selectionEnd !== 0) && (self.selectionEnd !== self.value.length)){
+		return
+	}
+
+	if(! ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", "Tab", "Enter"].includes(e.key)){
+		return
+	}
+
+	//e.preventDefault()
+
+
+	var layout = (project.info.infofield << 1) | project.info.threeinrow
+
+	var isNext = ["ArrowRight", "ArrowDown", "Tab", "Enter"].includes(e.key)
+	if((!["ArrowDown", "ArrowRight"].includes(e.key)) && isNext){
+		isNext = !e.shiftKey
+	}
+
+	if(! (layout & 1)){
+		var select = isNext ? "next" : "previous"
+		var element = self[`${select}ElementSibling`]
+
+		if(element !== null){
+			if(!element.classList.contains("word")){
+				element = null
+			}
+			else if((!(layout & 2)) && (element.nodeName !== "INPUT")){
+				element = null
+			}
+		}
+
+		if(element === null){
+			element = self.parentElement[`${select}ElementSibling`]
+			if(element !== null){
+				let query = `${layout & 2 ? "" : "input"}.word${isNext ? "" : layout & 2 ? ":last-child" : ":nth-last-of-type(1)"}`
+				element = element.querySelector(query)
+			}
+		}
+		if(element !== null){
+			element.focus()
+		}
+
+		return
+	}
+
+	var isH = ["ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
+	var isV = ["ArrowUp", "ArrowDown"].includes(e.key)
+
+	if(layout & 1){
+		if(isV && (layout & 2)){
+			var element = self.parentElement
+			if((self.nodeName === "INPUT") && (!isNext)){
+				element = element.previousElementSibling.querySelector("textarea.word")
+			}else if((self.nodeName === "TEXTAREA") && (isNext)){
+				element = element.nextElementSibling.querySelector("input.word")
+			}else{
+				var query = `${self.nodeName === "INPUT" ? "textarea" : "input"}.word`
+				element = element.querySelector(query)
+			}
+			if(element !== null){
+				element.focus()
+			}
+
+		}
+		if(isV && (! (layout & 2))){
+			var element = self.parentElement[`${isNext ? "next" : "previous"}ElementSibling`]
+			if(element === null){
+				return
+			}
+			var query = `.word#${self.id}`
+			element = element.querySelector(query)
+			if(element !== null){
+				element.focus()
+			}
+		}
+		if(isH || (e.key === "Enter")){
+			var element = self[`${isNext ? "next" : "previous"}ElementSibling`]
+			if(element !== null){
+				if(!element.classList.contains("word")){
+					element = null
+				}
+				else if((!(layout & 2)) && (element.nodeName !== "INPUT")){
+					element = null
+				}
+			}
+			if(element === null){
+				element = self.parentElement[`${isNext ? "next" : "previous"}ElementSibling`]
+				if(element !== null){
+					let query = `${isNext ? "input" : (layout & 2 ? "textarea" : "input")}.word${isNext ? "" : ":nth-last-of-type(1)"}`
+					element = element.querySelector(query)
+				}
+			}
+			if(element !== null){
+				element.focus()
+			}
+		}
+	}
+}
+
 const theme = document.getElementById("theme")
 
 if (localStorage.getItem("fontsize") === null){
@@ -46,23 +168,6 @@ const icon = document.getElementById("icon")
 if (window.matchMedia('(prefers-color-scheme: dark)').matches){
 	icon.href = "icon_white_blush.svg"
 }
-
-
-const emptyProject = {
-	info: {
-		author: "",
-		primaryLanguage: "",
-		secondaryLanguage: "",
-		name: "",
-		alphabet: "",
-		sortBy: "primaryLanguage",
-	},
-	words: [
-
-	]
-}
-
-let project = JSON.parse(JSON.stringify(emptyProject));
 
 let projectEverChanged = false
 
@@ -115,10 +220,10 @@ function makeNewEntry(id){
 	return `
 	<div class="entry" id="${id}">
 		<button class="delete" onclick="removeEntry(this.parentElement.id)">Trash</button>
-		<input type="text" autocomplete="off" class="word" id="word">
-		<input type="text" autocomplete="off" class="word" id="translation">
-		<input type="text" autocomplete="off" class="word" id="pronounciation">
-		<textarea class="word" id="meaning"></textarea>
+		<input type="text" autocomplete="off" class="word" id="word" onkeydown="handleKeyPress(window.event, this)">
+		<input type="text" autocomplete="off" class="word" id="translation" onkeydown="handleKeyPress(window.event, this)">
+		<input type="text" autocomplete="off" class="word" id="pronounciation" onkeydown="handleKeyPress(window.event, this)">
+		<textarea class="word" id="meaning" onkeydown="handleKeyPress(window.event, this, true)"></textarea>
 	</div>`
 }
 
