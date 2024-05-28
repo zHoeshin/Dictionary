@@ -51,12 +51,23 @@ const handleKeyPress = function(e, self, isTextArea = false){
 		return
 	}
 
-	//e.preventDefault()
-
-
+	
 	var layout = (project.info.infofield << 1) | project.info.threeinrow
-
+	
 	var isNext = ["ArrowRight", "ArrowDown", "Tab", "Enter"].includes(e.key)
+	
+	if(!isNext){
+		if(self.selectionEnd !== 0){
+			return
+		}
+	}else{
+		if(self.selectionEnd !== self.value.length){
+			return
+		}
+	}
+	
+	e.preventDefault()
+
 	if((!["ArrowDown", "ArrowRight"].includes(e.key)) && isNext){
 		isNext = !e.shiftKey
 	}
